@@ -7,8 +7,8 @@ B = np.array([[0, 1], [1, 0]])
 
 # multiplying the matrices
 
-P = np.dot(A, B)
-Q = np.dot(B, A)
+P = A @ B
+Q = B @ A
 
 print('P = AB\nQ = BA')
 print('P =\n', P, '\nQ =\n', Q)
