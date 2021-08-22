@@ -20,7 +20,7 @@ Z = P - Q
 # condition to check if Z is 0 matrix
 
 result = np.all(Z == 0)
-print('Result')
+print('\nResult')
 if result:
     print('AB = BA')
 else:
