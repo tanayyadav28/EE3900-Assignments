@@ -7,15 +7,14 @@ B = np.array([[0, 1], [1, 0]])
 
 # multiplying the matrices
 
-P = A @ B
-Q = B @ A
+AB = A @ B
+BA = B @ A
 
-print('P = AB\nQ = BA')
-print('P =\n', P, '\nQ =\n', Q)
+print('AB =\n', AB, '\nBA =\n', BA)
 
 # subtracting P and Q to check whether Z is 0
 
-Z = P - Q
+Z = AB - BA
 
 # condition to check if Z is 0 matrix
 
