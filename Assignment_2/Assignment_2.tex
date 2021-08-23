@@ -1,4 +1,5 @@
   
+  
 \documentclass[journal,12pt,twocolumn]{IEEEtran}
 
 \usepackage{setspace}
@@ -148,15 +149,16 @@ https://github.com/tanayyadav28/EE3900-Assignments/blob/main/Assignment_2/Assign
 \end{lstlisting}
 \section{Problem}
 [Matrices Q2; Q47]\\
-\\If $A = \myvec{1 & 0\\ 0 & -1}$ and $B = \myvec{0 & 1\\1 & 0}$, then find $AB$, $BA$.\\Show that $AB \neq BA$.
+\\If $\vec{A} = \myvec{1 & 0\\ 0 & -1}$ and $\vec{B} = \myvec{0 & 1\\1 & 0}$, then find $\vec{AB}$, $\vec{BA}$.\\Show that $\vec{AB} \neq \vec{BA}$.
 \section{Solution}
-\\Performing respective matrix multiplications,
+Performing respective matrix multiplications,
 \begin{align}
-    AB &= \myvec{1 & 0\\ 0 & -1}\times\myvec{0 & 1\\1 & 0}\\
-    AB &= \myvec{0 & 1\\-1 & 0}\\
+    \vec{AB} &= \myvec{1 & 0\\ 0 & -1}\times\myvec{0 & 1\\1 & 0}\\
+    \vec{AB} &= \myvec{0 & 1\\-1 & 0}\\
     \text{Similarly,}\notag \\
-    BA &= \myvec{0 & 1\\1 & 0}\times\myvec{1 & 0\\ 0 & -1}\\
-    BA &= \myvec{0 & -1\\1 & 0}\\
-    \\\therefore AB &\neq BA
+    \vec{BA} &= \myvec{0 & 1\\1 & 0}\times\myvec{1 & 0\\ 0 & -1}\\
+    \vec{BA} &= \myvec{0 & -1\\1 & 0}\\
+    \\\therefore \vec{AB} &\neq \vec{BA}
 \end{align}
 \end{document}
+
