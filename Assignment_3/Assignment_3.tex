@@ -149,6 +149,29 @@ https://github.com/tanayyadav28/EE3900-Assignments/blob/main/Assignment_3/Assign
 [Construction S2; Q8]
 Can you construct a quadrilateral MIST where $MI = 3.5$, $IS = 6.5$, $\angle M = 100^{\circ}$, $\angle I = 105^{\circ}$, and $\angle S = 120^{\circ}$.
 \section{Solution}
+\begin{lemma}
+    \label{lemma1}
+    Any Vector $\vec{X}$ can be expressed as:
+    \begin{align}
+        \vec{X} &= \vec{A} + x\vec{H}
+    \end{align}
+    where,\\
+    $\vec{A}$ is the tail of the vector $\vec{X}$,\\
+    $x$ is the magnitude of the required vector $\vec{X}$,\\
+    $\vec{H}$ is the unit vector in the direction of the vector $\vec{X}$,\\
+    $\vec{H}$ is given as
+    \begin{align}
+        \vec{H} &= \myvec{\cos(\theta)\\\sin(\theta)}
+    \end{align}
+    where, $\theta$ is the angle made by the vector $\vec{X}$ with the positive x-axis.
+    \\ Addition of two such vectors ($\vec{x}$, $\vec{y}$) can be written as:
+    \begin{align}
+        \vec{x} &= \vec{A} + x\vec{H}\\
+        \vec{y} &= \vec{B} + y\vec{K}\\
+        \therefore \vec{x} + \vec{y} &= \vec{A} + \vec{B} + x\vec{H} + y\vec{K}\\
+       \therefore \vec{x} + \vec{y} &= \myvec{\vec{A} + \vec{B}} + \myvec{\vec{H} & \vec{K}}\myvec{x\\y}
+    \end{align}
+\end{lemma}
 Given,
 \begin{align}
     \norm{\vec{MI}} &= 3.5\\
@@ -174,22 +197,24 @@ The vectors are along the x-axis. Hence the coordinates are:
     \therefore \vec{I} &= \myvec{-3.25\\0}\\
     \vec{S} &= \myvec{3.25\\0}
 \end{align}
+Using Lemma \eqref{lemma1},
 \begin{align}
     \because \angle MIS &= 105^{\circ}\\
     \therefore \vec{M} &= \myvec{-3.25 + \norm{{\vec{MI}}}\cos({\angle{MIS}})\\0 + \norm{\vec{MI}}\sin({\angle{MIS}})}\\
     \therefore \vec{M} &= \myvec{-4.15\\3.38}
 \end{align}
-Now,
+Now by Lemma \eqref{lemma1},
 \begin{align}
 \vec{T} &= \vec{S} + x\myvec{\cos(180-\angle IST)\\\sin(180-\angle IST)}.
 \end{align}
-\\Now, the angle made by $\vec{MI}$ with negative x-axis is $180-105 = 75^{\circ}$. \\
+\\Now, the angle made by $\vec{MI}$ with negative x-axis is $180-105 = 75^{\circ}$. \\\\
 $\therefore$ The angle made by $\vec{TM}$ with x-axis: $ \alpha = (75-35) = 40^{\circ}$.
 Hence,
 \begin{align}
 \vec{T} &= \vec{M} + y\myvec{\cos(180 - \alpha)\\ \sin(180 - \alpha)}\\
 \therefore \vec{S} + x\myvec{\cos(60)\\\sin(60)} &= \vec{M} + y\myvec{\cos(140)\\\sin(140)}\\
 \therefore \myvec{3.25\\0} + x\myvec{0.5\\0.86} &= \myvec{-4.15 \\ 3.38} + y\myvec{-0.76\\0.64}\\
+\text{Using Lemma \eqref{lemma1}}\notag\\
 \myvec{0.5 & 0.76\\ 0.86 & -0.64}\myvec{x\\y} &= \myvec{-7.4\\3.38} \label{eq:2.0.22}
 \end{align}
 Let
@@ -205,19 +230,19 @@ $\therefore \vec{A}^{-1}$ exists.
 \end{align}
 Pre-multiplying $\vec{A}^{-1}$ to \eqref{eq:2.0.22},
 \begin{align}
-    \myvec{x\\y} &= \myvec{0.66 & 0.78\\ 0.88 & -0.51}\times \myvec{-7.4\\3.38}\\
+   \myvec{1 & 0\\0 & 1} \myvec{x\\y} &= \myvec{0.66 & 0.78\\ 0.88 & -0.51} \myvec{-7.4\\3.38}\\
     \therefore \myvec{x \\ y} &= \myvec{-2.24\\-8.23}\\
     \therefore x &= -2.24\\
     y &= -8.23
 \end{align}
 But, $x$ and $y$ are magnitudes of $\vec{ST}$, $\vec{TM}$ and hence are always positive.\\
 Hence, a quadrilateral cannot be constructed using the given parameters.
-\\The following python plot shows that this quadrilateral cannot be constructed.
+\\The adjacent python plot shows that this quadrilateral cannot be constructed.
 \begin{figure}[h]
     \centering
-    \includegraphics[scale = 0.52]{figure/Figure_1.png}
+    \includegraphics[scale = 0.52]{Figure_1.png}
     \caption{Plot for Quadrilateral MIST}
     \label{fig:my_label}
 \end{figure}
-
 \end{document}
+
