@@ -149,8 +149,8 @@ https://github.com/tanayyadav28/EE3900-Assignments/blob/main/Assignment_4/Assign
 [Linear Forms 2.23]
 Find the shortest distance between the lines:
 \begin{align}
-    L_1 : \vec{x} &= \myvec{1\\2\\3} + \lambda_1 \myvec{1\\-3\\2}\\
-    L_2 : \vec{x} &= \myvec{4\\5\\6} + \lambda_2 \myvec{2\\3\\1}
+    L_1 : \vec{x} &= \myvec{1\\2\\3} + \lambda_1 \myvec{1\\-3\\2} \label{eq:1}\\
+    L_2 : \vec{x} &= \myvec{4\\5\\6} + \lambda_2 \myvec{2\\3\\1} \label{eq:2}
 \end{align}
 \section{Solution}
 Given,
@@ -173,53 +173,52 @@ Row reducing the augmented matrix,
     \myvec{1 & 2 & 3\\ 0 & 9 & 12\\0 & -3 & -3} &\xleftrightarrow{R_3 = R_3 + \frac{R_2}{3}} \myvec{1 & 2 & 3\\ 0 & 9 & 12\\0 & 0 & 1}
 \end{align}
 The above matrix has $rank = 3$. Hence, the given lines are skew-lines.\\
-The normal to both the lines is:
+Let d be the shortest distance and $\Vec{p_{1}}, \Vec{p_{2}}$ be positional vectors of its end points.
+For d to be shortest, we know that,
 \begin{align}
-    \vec{n} &= \vec{m}_1 \times \vec{m}_2
+    \label{eq:9}
+    \Vec{m_{1}}^\top\brak{\Vec{p_{2}}-\Vec{p_{1}}}=0\\
+    \label{eq:10}
+     \Vec{m_{2}}^\top\brak{\Vec{p_{2}}-\Vec{p_{1}}}=0\\
+     \label{eq:11}
+     \Vec{m_{1}}^\top\brak{\brak{\Vec{A}_{2} - \Vec{A}_{1}}}+\myvec{\Vec{m_{2}} & \Vec{m}_{1}}\myvec{\lambda_{1} \\ \lambda_{2}}=0\\
+     \label{eq:12}
+     \Vec{m_{2}}^\top\brak{\brak{\Vec{A}_{2} - \Vec{A}_{1}}}+\myvec{\Vec{m_{2}} & \Vec{m_{1}}}\myvec{\lambda_{1} \\ \lambda_{2}}=0
 \end{align}
-The equation of the plane is then obtained as:
+Let 
 \begin{align}
-    \vec{n}^T\vec{x} &= \vec{n}^T\vec{A}_2
+\label{eq:13}
+    \Vec{M}&=\myvec{\Vec{m_{2}} & \Vec{m}_{1}} & \Vec{M}^\top&=\myvec{\Vec{m_{2}}^\top \\ \Vec{m_{1}}^\top}
 \end{align}
-The distance of the above line from $\vec{A}_2$ is obtained as:
+By combining equations \eqref{eq:11} and \eqref{eq:12} and writing in terms of $\Vec{M}$ and $\Vec{M}^\top$ using \eqref{eq:13}, we get
 \begin{align}
-    \frac{n^T(\vec{A}_2 - \vec{A}_1)}{\norm{\vec{n}}} &= \frac{(\vec{A}_2 - \vec{A}_1)^T(\vec{m}_1 \times \vec{m}_2)}{\norm{\vec{m}_1 \times \vec{m}_2}}\\
-    &= \frac{\myvec{3\\3\\3}^T\myvec{-9\\3\\9}}{\sqrt{\myvec{-9\\3\\9}^T\myvec{-9\\3\\9}}}
+    \label{eq:14}
+    \Vec{M}^\top\Vec{M}\myvec{\lambda_{2} \\ -\lambda_{1}}= \Vec{M}^\top\brak{\Vec{A}_{1} - \Vec{A}_{2}}
 \end{align}
+By putting the values of $\vec{A_1},\vec{A_2},\vec{m_1},\vec{m_2}$ in \eqref{eq:14}, we get
 \begin{align}
-    &= \frac{9}{\sqrt{171}}\\
-    &= \frac{3}{\sqrt{19}}
+    \label{eq:15}
+    \myvec{14 & -5 \\ -5 & 14}\myvec{\lambda_{2} \\ -\lambda_{1}}=\myvec{-18 \\ 0}
 \end{align}
-Let $\vec{P}$ and $\vec{Q}$ be the nearest points on the lines $L_1$ and $L_2$ respectively.
+Solving \eqref{eq:15}, we get
 \begin{align}
-    \vec{P} &= \myvec{1\\2\\3} + \lambda_1 \myvec{1\\-3\\2}\\
-    \vec{Q} &= \myvec{4\\5\\6} + \lambda_2 \myvec{2\\3\\1}\\
-    \vec{PQ} &= \vec{Q} - \vec{P}\\
-    \vec{PQ} &= \myvec{3\\3\\3} + \myvec{ 2\lambda_2-\lambda_1\\ 3\lambda_2 + 3\lambda_1\\ \lambda_2 - 2\lambda_1}\\
-    \vec{PQ} &= \myvec{3 + 2\lambda_2- \lambda_1 \\ 3+3\lambda_2 +3\lambda_1 \\ 3 + \lambda_2 - 2\lambda_1}
+    \label{eq:16}
+    \myvec{\lambda_{2} \\ -\lambda_{1}}=\myvec{-1.4736 \\ -0.5263}
 \end{align}
-As $\vec{PQ}$ is the shortest distance between the lines $L_1$ and $L_2$, it is perpendicular to both.
+Substituting the value of $\lambda_{1}$ and $\lambda_{2}$ in \eqref{eq:1} and \eqref{eq:2}, we get
 \begin{align}
-    \vec{PQ}^T\vec{m_1} &= 0\\
-    \vec{PQ}^T\vec{m_2} &= 0\\
-    \therefore \vec{PQ}^T\vec{m_1} &= 14\lambda_1 + 5\lambda_2\\
-    \therefore \vec{PQ}^T\vec{m_2} &= 5\lambda_1 + 14\lambda_2 + 18
+    \label{eq:17}
+    \Vec{p_{1}} &= \myvec{1.5263\\ 0.4210 \\ 4.0526 }   &    \Vec{p_{2}}&=\myvec{ 1.0526\\0.5789\\4.5263}
 \end{align}
-Now,
+Hence, the shortest distance between these two skew lines is
 \begin{align}
-    14\lambda_1 + 5\lambda_2 &= 0\\
-    5\lambda_1 + 14\lambda_2 + 18 &= 0
+    \label{eq:18}
+    d = \norm{\Vec{p_{2}}-\Vec{p_{1}}} = 0.6882
 \end{align}
-Hence,
-\begin{align}
-    \lambda_1 &= \frac{10}{19}\\ \lambda_2 &= \frac{-28}{19}\\
-    \therefore \vec{P} &= \myvec{1\\2\\3} + \frac{10}{19} \myvec{1\\-3\\2} = \frac{1}{19}\myvec{29\\8\\77}\\
-    \therefore \vec{Q} &= \myvec{4\\5\\6} + \frac{-28}{19} \myvec{2\\3\\1} = \frac{1}{19}\myvec{20\\11\\86}
-\end{align}
-Hence, the shortest distance between the given lines is $\dfrac{3}{\sqrt{19}}$.
+Hence, the shortest distance between the given lines is $0.6882$.
 \begin{figure}[h]
     \centering
-    \includegraphics[scale = 0.6]{figure/Figure_1.png}
+    \includegraphics[scale = 0.6]{Figure_1.png}
     \caption{Plot from Python Code.}
     \label{fig:my_label}
 \end{figure}
