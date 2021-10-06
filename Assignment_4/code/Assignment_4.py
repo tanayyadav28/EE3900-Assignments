@@ -20,16 +20,25 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
 # Plane points
-A1 = np.array([1, 2, 3])
-A2 = np.array([4, 5, 6])
-P = np.array([29/19, 8/19, 77/19])
-Q = np.array([20/19, 11/19, 86/19])
-m1 = np.array([1, -3, 2])
-m2 = np.array([2, 3, 1])
+A1 = np.array([1, 2, 3]).T
+A2 = np.array([4, 5, 6]).T
+m1 = np.array([1, -3, 2]).T
+m2 = np.array([2, 3, 1]).T
 k1 = -4
 k2 = 4
 x2_dist_skew = line_dir_pt(m2, A2, k1, k2)
 x1_dist_skew = line_dir_pt(m1, A1, k1, k2)
+
+M = np.array([m1, m2]).T
+
+M_T = M.T
+temp = M_T @ (A1 - A2)
+temp = temp.reshape(2, 1)
+lambda_ = (np.linalg.inv(M_T @ M) @ temp).T
+
+P = A1 - lambda_[0][0] * m1
+Q = A2 + lambda_[0][1] * m2
+
 
 # Plotting all lines
 plt.plot(x1_dist_skew[0, :], x1_dist_skew[1, :], x1_dist_skew[2, :], label='$L_1$')
@@ -41,8 +50,8 @@ ax.scatter(P[0], P[1], P[2], 'o')
 ax.scatter(Q[0], Q[1], Q[2], 'o')
 ax.text(1.25, 2.25, 3.25, "A1", color='red')
 ax.text(4.5, 5.5, 6.5, "A2", color='green')
-ax.text(P[0] + 0.5, P[1] + 0.5, P[2] + 0.5, 'P', color='blue')
-ax.text(Q[0] + 0.5, Q[1] + 0.5, Q[2] + 0.5, 'Q', color='blue')
+ax.text(P[0] + 0.5, P[1] + 0.5, P[2] + 0.5, 'p1', color='blue')
+ax.text(Q[0] + 0.5, Q[1] + 0.5, Q[2] + 0.5, 'p2', color='blue')
 
 plt.xlabel('$x$')
 plt.ylabel('$y$')
